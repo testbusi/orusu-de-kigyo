@@ -27,17 +27,20 @@
 
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   background:var(--mint);
   color:var(--cream);
+  overflow-x:hidden;
+  width:100%;
+  max-width:100%;
   font-family:'Noto Sans JP',sans-serif;
   font-weight:400;
   line-height:1.9;
   letter-spacing:.04em;
   font-feature-settings:"palt";
   -webkit-font-smoothing:antialiased;
-  word-break:keep-all;
+  word-break:normal;
   overflow-wrap:break-word;
   line-break:strict;
 }
@@ -549,10 +552,18 @@ h2.sec-title.on-cream{color:var(--navy)}
 }
 .skills-list li::marker{color:var(--mint-deep);font-family:'Noto Serif JP',serif}
 @media(max-width:600px){
-  .cmp th,.cmp td{padding:11px 7px;font-size:.8rem}
-  .cmp .ph-name{font-size:.9rem}
-  .cmp .ph-price{font-size:1.2rem}
-  .cmp .rowlabel{font-size:.66rem;letter-spacing:.04em;white-space:normal}
+  body{letter-spacing:.02em}
+  /* セクション番号(01〜)がカード内容に被るのを防ぐ：スマホでは非表示 */
+  body>section::after{display:none}
+  /* 比較表：ラベル列を広く、プラン列を狭く。詰めても破綻しない幅配分に */
+  .cmp{table-layout:fixed}
+  .cmp col.c-label{width:46%}
+  .cmp col.c-plan{width:27%}
+  .cmp th,.cmp td{padding:10px 6px;font-size:.78rem;line-height:1.6}
+  .cmp .ph-name{font-size:.82rem}
+  .cmp .ph-price{font-size:1.05rem}
+  .cmp .rowlabel{font-size:.7rem;letter-spacing:.02em;white-space:normal;line-height:1.45}
+  .cmp td.cell.txt{font-size:.76rem}
 }
 
 /* ===== Section 10: about ===== */
