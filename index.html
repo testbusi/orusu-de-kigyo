@@ -656,15 +656,17 @@ footer{
   letter-spacing:.08em;
 }
 
-/* ===== Reveal animation ===== */
-.reveal{
+/* ===== Reveal animation =====
+   既定は「表示」。JSが動くときだけ .js-anim が付き、隠して→スクロールで表示。
+   → JS無効・監視失敗・アプリ内ブラウザでも、コンテンツは必ず見える。 */
+.reveal{transition:opacity .9s ease,transform .9s ease}
+.js-anim .reveal{
   opacity:0;
   transform:translateY(22px);
-  transition:opacity .9s ease,transform .9s ease;
 }
-.reveal.in{opacity:1;transform:none}
+.js-anim .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
+  .js-anim .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
 }
 
@@ -1186,25 +1188,29 @@ const CONFIG = {
   if (y) y.textContent = new Date().getFullYear();
 })();
 
-// --- スクロールで「ふわっと」現れる（必ず表示される保険つき） ---
+// --- スクロールで「ふわっと」現れる（必ず表示される多重保険つき） ---
+// JSが動くときだけ隠す（=JS無効なら最初から全部表示される）
+document.documentElement.classList.add('js-anim');
 (function(){
   const items = document.querySelectorAll('.reveal');
   const revealAll = () => items.forEach(el => el.classList.add('in'));
-  // IntersectionObserver非対応 → 即全表示
-  if (!('IntersectionObserver' in window)){ revealAll(); return; }
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.01, rootMargin: '0px 0px -5% 0px' });
-  items.forEach(el => io.observe(el));
-  // 保険①：監視が発火しない環境（アプリ内ブラウザ等）でも、1.2秒後に必ず全表示
-  setTimeout(revealAll, 1200);
-  // 保険②：読み込み完了後にも一度全表示を保証
-  window.addEventListener('load', () => setTimeout(revealAll, 300));
+  // 保険①：何があっても1秒後に全表示（監視失敗・アプリ内ブラウザ対策）
+  setTimeout(revealAll, 1000);
+  // 保険②：読み込み完了後にも全表示を保証
+  window.addEventListener('load', () => setTimeout(revealAll, 200));
+  // 通常はスクロールで順次表示（失敗しても上の保険で必ず出る）
+  try {
+    if (!('IntersectionObserver' in window)){ revealAll(); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.01, rootMargin: '0px 0px -5% 0px' });
+    items.forEach(el => io.observe(el));
+  } catch(e){ revealAll(); }
 })();
 </script>
 
