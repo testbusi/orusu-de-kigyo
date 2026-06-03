@@ -1186,13 +1186,12 @@ const CONFIG = {
   if (y) y.textContent = new Date().getFullYear();
 })();
 
-// --- スクロールで「ふわっと」現れる ---
+// --- スクロールで「ふわっと」現れる（必ず表示される保険つき） ---
 (function(){
   const items = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)){
-    items.forEach(el => el.classList.add('in'));
-    return;
-  }
+  const revealAll = () => items.forEach(el => el.classList.add('in'));
+  // IntersectionObserver非対応 → 即全表示
+  if (!('IntersectionObserver' in window)){ revealAll(); return; }
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting){
@@ -1200,8 +1199,12 @@ const CONFIG = {
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: 0.01, rootMargin: '0px 0px -5% 0px' });
   items.forEach(el => io.observe(el));
+  // 保険①：監視が発火しない環境（アプリ内ブラウザ等）でも、1.2秒後に必ず全表示
+  setTimeout(revealAll, 1200);
+  // 保険②：読み込み完了後にも一度全表示を保証
+  window.addEventListener('load', () => setTimeout(revealAll, 300));
 })();
 </script>
 
