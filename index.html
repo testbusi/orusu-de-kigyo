@@ -574,6 +574,52 @@ h2.sec-title.on-cream{color:var(--navy)}
   .cmp td.cell.txt{font-size:.76rem}
 }
 
+/* ===== Product D plans (new) ===== */
+.dplan{margin-top:30px;padding-top:28px;border-top:1px solid var(--beige)}
+.dplan-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:6px}
+.dplan-name{font-family:'Noto Serif JP',serif;font-weight:500;font-size:1.2rem;color:var(--navy);letter-spacing:.02em}
+.dplan-price{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.5rem;color:var(--navy);letter-spacing:.02em;margin-left:auto}
+.dplan-sub{color:var(--gray);font-size:.92rem;margin-bottom:16px}
+
+.svc-list{list-style:none;margin-top:14px}
+.svc-list li{padding:14px 0;border-bottom:1px solid var(--beige)}
+.svc-list li:last-child{border-bottom:none}
+.svc-name{display:block;font-weight:500;color:var(--navy);font-size:1rem;margin-bottom:4px}
+.svc-name::before{content:"";display:inline-block;width:14px;height:1px;background:var(--mint-deep);vertical-align:middle;margin-right:10px}
+.svc-desc{display:block;color:var(--gray);font-size:.9rem;line-height:1.85;padding-left:24px}
+
+/* 6-work table（添付の表を再現） */
+.worktable-wrap{margin-top:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.worktable{width:100%;border-collapse:collapse;min-width:520px}
+.worktable col.wt-1{width:26%}
+.worktable col.wt-2{width:40%}
+.worktable col.wt-3{width:34%}
+.worktable thead th{
+  background:var(--mint);color:var(--cream);
+  font-weight:500;font-size:.82rem;letter-spacing:.06em;
+  text-align:left;padding:14px 16px;
+}
+.worktable tbody td{
+  border-bottom:1px solid var(--beige);
+  padding:14px 16px;font-size:.9rem;color:var(--navy);vertical-align:top;line-height:1.7;
+}
+.worktable tbody tr:last-child td{border-bottom:none}
+.worktable .wt-work{font-weight:500;color:var(--navy);white-space:nowrap}
+.worktable .wt-no{color:var(--mint-deep);font-weight:700;margin-right:6px}
+.worktable .wt-deliv{color:var(--mint-deep);font-weight:700}
+
+.dplan-bonus{
+  margin-top:18px;padding:14px 18px;
+  background:var(--mint-tint);border-left:3px solid var(--mint-deep);
+  color:var(--navy);font-size:.92rem;font-weight:500;
+}
+@media(max-width:600px){
+  .dplan-price{font-size:1.25rem}
+  .worktable{min-width:480px}
+  .worktable thead th,.worktable tbody td{padding:11px 10px;font-size:.8rem}
+  .svc-desc{padding-left:0}
+}
+
 /* ===== Section 10: about ===== */
 .about-photo{
   width:132px;height:132px;border-radius:50%;
@@ -944,13 +990,13 @@ body>section::after{
       <div class="step reveal">
         <span class="step-no">Step 3</span>
         <h3>フルビルド プラン①</h3>
-        <span class="price">¥150,000</span>
+        <span class="price">¥70,000</span>
         <span class="desc">事業の基本骨格を作りたい方へ。</span>
       </div>
       <div class="step reveal">
         <span class="step-no">Step 4</span>
         <h3>フルビルド プラン②</h3>
-        <span class="price">¥500,000</span>
+        <span class="price">¥200,000</span>
         <span class="desc">完成形まで建てたい方へ。</span>
       </div>
     </div>
@@ -1020,111 +1066,52 @@ body>section::after{
       <span class="eyebrow">Product D</span>
       <h2 class="serif">あなたのお留守ビジネスを、丸ごと建てる。</h2>
       <p class="lead-sub">部品ではなく、家ごと。</p>
-      <div class="reveal">
-        <table class="cmp">
-          <colgroup>
-            <col class="c-label"><col class="c-plan"><col class="c-plan">
-          </colgroup>
-          <thead>
-            <tr>
-              <th class="corner"></th>
-              <th><span class="ph-name">プラン① 基本骨格</span><span class="ph-price serif">¥150,000</span></th>
-              <th class="col-hi"><span class="ph-name">プラン② 完成形</span><span class="ph-price serif">¥500,000</span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th class="rowlabel" scope="row">対象</th>
-              <td class="cell txt">事業の基本骨格を作りたい人</td>
-              <td class="cell txt col-hi">事業の完成形まで建てたい人</td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">含まれる工程</th>
-              <td class="cell txt">設計＋入口づくり</td>
-              <td class="cell txt col-hi">設計＋入口＋販売の自動化（フル）</td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">お留守見取り図</th>
-              <td class="cell"><span class="yes">✓</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">玄関LP（自社サイト）</th>
-              <td class="cell"><span class="yes">✓</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">インスタ設計</th>
-              <td class="cell"><span class="yes">✓</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">管理人ツール</th>
-              <td class="cell"><span class="yes">✓</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">メルマガ動線テンプレ（7通分）</th>
-              <td class="cell"><span class="yes">✓</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">金庫LP（販売用）</th>
-              <td class="cell"><span class="no">—</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">インスタ構築運用</th>
-              <td class="cell"><span class="no">—</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">専用ツール「あなたの分身」</th>
-              <td class="cell"><span class="no">—</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">お留守スコア計測シート</th>
-              <td class="cell"><span class="no">—</span></td>
-              <td class="cell col-hi"><span class="yes">✓</span></td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">テキスト相談</th>
-              <td class="cell txt">無制限</td>
-              <td class="cell txt col-hi">無制限</td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">卒業後フォロー</th>
-              <td class="cell"><span class="no">—</span></td>
-              <td class="cell txt col-hi">3ヶ月のメール質問対応</td>
-            </tr>
-            <tr>
-              <th class="rowlabel" scope="row">身につく力</th>
-              <td class="cell txt">3つ</td>
-              <td class="cell txt col-hi">5つ</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="skills-note">
-          <div class="skills-col">
-            <span class="skills-label">プラン①で身につく力</span>
-            <ol class="skills-list">
-              <li>自分の事業を可視化する力</li>
-              <li>LP・インスタなど入口を設計・制作する力</li>
-              <li>WEBツール（管理人）を運用する基本力</li>
-            </ol>
-          </div>
-          <div class="skills-col">
-            <span class="skills-label">プラン②で身につく力</span>
-            <ol class="skills-list">
-              <li>自分の事業を可視化する力</li>
-              <li>LP・インスタなど入口を設計・構築・運用する力</li>
-              <li>WEBツール（管理人/分身）を設計・運用する力</li>
-              <li>販売動線・教育動線を設計する力</li>
-              <li>ビジネスを自己診断・改善する力</li>
-            </ol>
-          </div>
+      <!-- プラン① -->
+      <div class="dplan reveal">
+        <div class="dplan-head">
+          <span class="dplan-name serif">プラン①｜お留守の土台</span>
+          <span class="dplan-price serif">¥70,000</span>
         </div>
+        <ul class="svc-list">
+          <li>
+            <span class="svc-name">お留守見取り図</span>
+            <span class="svc-desc">事業全体を1枚に設計。今のお留守スコアも測定し、どこを建てれば回り始めるかが見える。</span>
+          </li>
+          <li>
+            <span class="svc-name">売れる商品の設計</span>
+            <span class="svc-desc">「何を売るか」を一緒に固める。あなたが毎回動かなくても提供できる形に。</span>
+          </li>
+          <li>
+            <span class="svc-name">自動で語るLP</span>
+            <span class="svc-desc">あなたが営業しなくても、ページが代わりに価値を伝える入口。</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- プラン② -->
+      <div class="dplan dplan-hi reveal">
+        <div class="dplan-head">
+          <span class="dplan-name serif">プラン②｜全6回のワークで家を建てる</span>
+          <span class="dplan-price serif">¥200,000</span>
+        </div>
+        <p class="dplan-sub">各ワークで、制作物が残る。</p>
+        <div class="worktable-wrap">
+          <table class="worktable">
+            <colgroup><col class="wt-1"><col class="wt-2"><col class="wt-3"></colgroup>
+            <thead>
+              <tr><th>ワーク</th><th>一緒にやること</th><th>手に入る制作物</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="wt-work"><span class="wt-no">1.</span>設計する</td><td>事業全体を1枚の設計図にする</td><td class="wt-deliv">お留守見取り図</td></tr>
+              <tr><td class="wt-work"><span class="wt-no">2.</span>商品を決める</td><td>「何を、どう売るか」を固める</td><td class="wt-deliv">商品設計シート</td></tr>
+              <tr><td class="wt-work"><span class="wt-no">3.</span>玄関を建てる</td><td>営業しなくても売れるLPを作る</td><td class="wt-deliv">販売導線まで作り込んだLP</td></tr>
+              <tr><td class="wt-work"><span class="wt-no">4.</span>応接間を作る</td><td>信頼が自動で育つ公式LINEを一緒に構築</td><td class="wt-deliv">あなたの公式LINE</td></tr>
+              <tr><td class="wt-work"><span class="wt-no">5.</span>玄関への道を整える</td><td>毎日投稿しなくても回るインスタ設計</td><td class="wt-deliv">インスタの仕組み＋投稿ストック</td></tr>
+              <tr><td class="wt-work"><span class="wt-no">6.</span>お留守度を測る</td><td>スコアで完成度を確認、次の改善計画</td><td class="wt-deliv">お留守スコア診断＋改善計画</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dplan-bonus">＋ 卒業後3ヶ月の質問対応（自分で回すための伴走）</div>
       </div>
     </div>
   </div>
